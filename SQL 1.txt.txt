@@ -1,0 +1,58 @@
+--Task 1
+--select 
+--from wards
+--where places > 10;
+
+--Task 2
+--select d.building, COUNT(w.id) as count_places
+--from wards as w
+--join departments as d
+--on w.department_id = d.id
+--GROUP By d.building;
+
+--Task 3
+--select d.name, COUNT(w.id)
+--from wards as w
+--join departments as d
+--on w.department_id = d.id
+--GROUP By d.name;
+
+--Task 4
+--select dp.name, Sum(d.premium_money)
+--from departments as dp
+--join doctors as d
+--on d.department_id = dp.id
+--GROUP By dp.name;
+
+--Task 5
+--select dp.name, sum(de.examination_id) 
+--from doctors as d
+--join doctorsExaminations as de
+--on de.doctor_id = d.id
+--join departments as dp
+--on d.department_id = dp.id
+--GROUP By dp.name
+--HAVING sum(de.examination_id)  >= 2;
+
+--Task 6 
+--select COUNT(id), sum(salary + premium_money)
+--from doctors;
+
+--Task 7
+--select COUNT(id), AVG(salary + premium_money)
+--from doctors;
+
+--Task 8
+--select name, places
+--from wards
+--order by places 
+--limit 1;
+
+--Task 9
+select dp.building
+from departments as dp
+join wards as w
+on dp.id = w.department_id
+where  dp.building IN (1, 2) and w.places > 10
+GROUP by dp.building
+HAVING sum(w.places) >= 20;
